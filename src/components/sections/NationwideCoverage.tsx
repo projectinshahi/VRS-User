@@ -1,13 +1,12 @@
 "use client";
 const cities = [
-  { name: "Perth", left: "23%", top: "63%" },
-  { name: "Adelaide", left: "50%", top: "72%" },
-  { name: "Melbourne", left: "63%", top: "80%" },
-  { name: "Hobart", left: "66%", top: "92%" },
-  { name: "Canberra", left: "72%", top: "64%" },
-  { name: "Sydney", left: "75%", top: "58%" },
-  { name: "Gold Coast", left: "82%", top: "47%" },
-  { name: "Brisbane", left: "82%", top: "43%" },
+  { name: "Western Australia", left: "23%", top: "63%" },
+  { name: "South Australia", left: "50%", top: "72%" },
+  { name: "Victoria", left: "65%", top: "80%" },
+  { name: "Tasmania", left: "68%", top: "92%" },
+  { name: "NSW", left: "78%", top: "60%" },
+  { name: "Queensland", left: "84%", top: "45%" },
+  { name: "Northern Territory", left: "54%", top: "38%" },
 ];
 export default function NationwideCoverage() {
   return (
