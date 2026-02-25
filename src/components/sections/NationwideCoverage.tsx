@@ -1,17 +1,20 @@
 "use client";
-const cities = [
-  { name: "Western Australia", left: "23%", top: "63%" },
-  { name: "South Australia", left: "50%", top: "72%" },
-  { name: "Victoria", left: "65%", top: "80%" },
-  { name: "Tasmania", left: "68%", top: "92%" },
-  { name: "NSW", left: "78%", top: "60%" },
-  { name: "Queensland", left: "84%", top: "45%" },
-  { name: "Northern Territory", left: "54%", top: "38%" },
+
+const states = [
+  { name: "Western Australia", short: "WA", left: "23%", top: "63%" },
+  { name: "Northern Territory", short: "NT", left: "54%", top: "38%" },
+  { name: "South Australia", short: "SA", left: "50%", top: "72%" },
+  { name: "Queensland", short: "QLD", left: "84%", top: "45%" },
+  { name: "New South Wales", short: "NSW", left: "78%", top: "60%" },
+  { name: "Victoria", short: "VIC", left: "65%", top: "80%" },
+  { name: "Tasmania", short: "TAS", left: "68%", top: "92%" },
+  { name: "Australian Capital Territory", short: "ACT", left: "76%", top: "66%" },
 ];
+
 export default function NationwideCoverage() {
   return (
     <section className="relative bg-black py-24 overflow-hidden">
-            
+
       {/* Top Fade */}
       <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-black to-transparent"></div>
 
@@ -45,12 +48,11 @@ export default function NationwideCoverage() {
 
           {/* Pins */}
           <div className="relative h-[420px]">
-
-            {cities.map((city, index) => (
+            {states.map((state, index) => (
               <div
                 key={index}
                 className="absolute -translate-x-1/2 -translate-y-1/2"
-                style={{ left: city.left, top: city.top }}
+                style={{ left: state.left, top: state.top }}
               >
                 <div className="relative flex flex-col items-center">
 
@@ -62,13 +64,12 @@ export default function NationwideCoverage() {
 
                   {/* Label */}
                   <div className="mt-2 px-3 py-1 text-xs bg-black/85 text-white rounded-full border border-white/10 backdrop-blur-md whitespace-nowrap shadow-lg">
-                    {city.name}
+                    {state.name}
                   </div>
 
                 </div>
               </div>
             ))}
-
           </div>
         </div>
 
