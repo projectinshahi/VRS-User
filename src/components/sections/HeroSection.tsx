@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { useRouter } from "next/navigation";
 
-
 interface HeroData {
   type?: "image" | "video";
   videoUrl?: string;
@@ -103,21 +102,31 @@ export default function HeroSection() {
 
         <div className="mt-8 flex gap-4 flex-wrap justify-center">
           {/* Free Webinar - New Left Button */}
-          <button className="border border-yellow-500 text-yellow-500 px-6 py-2.5 text-sm rounded-sm font-medium hover:bg-yellow-500 hover:text-black transition">
+          <button
+            onClick={() => router.push("/webinar")}
+            className="border border-yellow-500 text-yellow-500 px-6 py-2.5 text-sm rounded-sm font-medium hover:bg-yellow-500 hover:text-black transition"
+          >
             Free Webinar
           </button>
 
           {/* Updated Button */}
-          <button 
-          onClick={() => router.push('/properties')}
-          className="bg-yellow-500 text-black px-6 py-2.5 text-sm rounded-sm font-medium hover:bg-yellow-400 transition">
+          <button
+            onClick={() => router.push("/properties")}
+            className="bg-yellow-500 text-black px-6 py-2.5 text-sm rounded-sm font-medium hover:bg-yellow-400 transition"
+          >
             Explore Secured Properties
           </button>
 
           {/* Existing Consultation Button */}
-          <button className="border border-yellow-500 text-yellow-500 px-6 py-2.5 text-sm rounded-sm font-medium hover:bg-yellow-500 hover:text-black transition">
-            Free Consultation
-          </button>
+          <a
+            href="https://learn.vrsrealinvest.com.au/web/lite/events/68b9e85ce4cad97bc9d8d657"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <button className="border border-yellow-500 text-yellow-500 px-6 py-2.5 text-sm rounded-sm font-medium hover:bg-yellow-500 hover:text-black transition">
+              Free Consultation
+            </button>
+          </a>
         </div>
 
         <div className="absolute bottom-10 animate-bounce">
@@ -131,6 +140,7 @@ export default function HeroSection() {
 /**
  * Extract YouTube Video ID
  */
+
 function getYoutubeId(url: string) {
   const regExp = /(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&]+)/;
   const match = url.match(regExp);
