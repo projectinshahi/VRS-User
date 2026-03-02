@@ -16,9 +16,9 @@ interface SecuredProperty {
 }
 
 export default function SecuredProperties() {
-  const [securedProperties, setSecuredProperties] = useState<
-    SecuredProperty[]
-  >([]);
+  const [securedProperties, setSecuredProperties] = useState<SecuredProperty[]>(
+    [],
+  );
   const [selectedProperty, setSelectedProperty] =
     useState<SecuredProperty | null>(null);
   const [currentImage, setCurrentImage] = useState<number>(0);
@@ -34,9 +34,7 @@ export default function SecuredProperties() {
   useEffect(() => {
     const fetchProperties = async () => {
       try {
-        const res = await axios.get(
-          `${API}/api/secured-properties`
-        );
+        const res = await axios.get(`${API}/api/secured-properties`);
         setSecuredProperties(res.data);
       } catch (error) {
         console.error("Error fetching secured properties:", error);
@@ -161,9 +159,7 @@ export default function SecuredProperties() {
                 </div>
 
                 <div className="absolute bottom-6 left-6 text-white">
-                  <h3 className="text-lg font-medium">
-                    {property.title}
-                  </h3>
+                  <h3 className="text-lg font-medium">{property.title}</h3>
 
                   <button
                     onClick={() => {
@@ -214,7 +210,7 @@ export default function SecuredProperties() {
                       setCurrentImage((prev) =>
                         prev === 0
                           ? selectedProperty.galleryImages.length - 1
-                          : prev - 1
+                          : prev - 1,
                       )
                     }
                     className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/60 text-white px-3 py-2"
@@ -224,9 +220,9 @@ export default function SecuredProperties() {
 
                   <button
                     onClick={() =>
-                      setCurrentImage((prev) =>
-                        (prev + 1) %
-                        selectedProperty.galleryImages.length
+                      setCurrentImage(
+                        (prev) =>
+                          (prev + 1) % selectedProperty.galleryImages.length,
                       )
                     }
                     className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/60 text-white px-3 py-2"
@@ -239,9 +235,7 @@ export default function SecuredProperties() {
 
             {/* Details */}
             <div className="p-8 text-white space-y-6">
-              <h2 className="text-2xl font-medium">
-                {selectedProperty.title}
-              </h2>
+              <h2 className="text-2xl font-medium">{selectedProperty.title}</h2>
 
               <p className="text-gray-300 leading-relaxed">
                 {selectedProperty.description}
@@ -249,27 +243,21 @@ export default function SecuredProperties() {
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4 border-t border-gray-700">
                 <div>
-                  <p className="text-gray-400 text-sm">
-                    Secured Price
-                  </p>
+                  <p className="text-gray-400 text-sm">Secured Price</p>
                   <p className="text-yellow-500 text-lg font-semibold">
                     {selectedProperty.securedPrice}
                   </p>
                 </div>
 
                 <div>
-                  <p className="text-gray-400 text-sm">
-                    Market Price
-                  </p>
+                  <p className="text-gray-400 text-sm">Market Value</p>
                   <p className="text-white text-lg font-semibold">
                     {selectedProperty.marketPrice}
                   </p>
                 </div>
 
                 <div>
-                  <p className="text-gray-400 text-sm">
-                    Current Price
-                  </p>
+                  <p className="text-gray-400 text-sm">Current value</p>
                   <p className="text-white text-lg font-semibold">
                     {selectedProperty.currentPrice}
                   </p>

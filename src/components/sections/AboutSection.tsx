@@ -6,7 +6,6 @@ import { CheckCircle, Shield, Target, TrendingUp } from "lucide-react";
 export default function AboutSection() {
   return (
     <section className="bg-gradient-to-b from-[#0f172a] to-black text-white">
-      
       {/* ================= HERO / FOUNDER ================= */}
       <div className="max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-12 items-center">
         <div className="w-full">
@@ -26,9 +25,12 @@ export default function AboutSection() {
           </h2>
 
           <p className="text-gray-300 text-lg leading-relaxed mb-6">
-            At <span className="text-yellow-400 font-semibold">VRS RealInvest</span>,
-            we help busy professionals build wealth through strategic Australian
-            real estate investing.
+            At{" "}
+            <span className="text-yellow-400 font-semibold">
+              VRS RealInvest
+            </span>
+            , we help busy professionals build wealth through strategic
+            Australian real estate investing.
           </p>
 
           <p className="text-gray-300 text-lg leading-relaxed mb-6">
@@ -39,8 +41,9 @@ export default function AboutSection() {
           </p>
 
           <p className="text-gray-400 leading-relaxed">
-            Led by <span className="text-white font-semibold">Sudhesh K Valappil</span>,
-            we represent you — the buyer — and guide you from strategy to
+            Led by{" "}
+            <span className="text-white font-semibold">Sudhesh K Valappil</span>
+            , we represent you — the buyer — and guide you from strategy to
             settlement.
           </p>
         </div>
@@ -136,7 +139,10 @@ export default function AboutSection() {
       {/* ================= MISSION ================= */}
       <SectionWrapper title="Our Mission">
         <p className="text-gray-300 text-lg leading-relaxed text-center">
-          To help <span className="text-yellow-400 font-bold">10,000 busy professionals</span>
+          To help{" "}
+          <span className="text-yellow-400 font-bold">
+            10,000 busy professionals{" "}
+          </span>
           grow long-term wealth through strategic real estate investments across
           Australia — with clarity, confidence, and a proven process.
         </p>
@@ -226,14 +232,29 @@ export default function AboutSection() {
   );
 }
 
-/* ================= REUSABLE COMPONENTS ================= */
 
-function SectionWrapper({ title, children }: { title: string; children: React.ReactNode }) {
+function SectionWrapper({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) {
   return (
-    <div className="max-w-7xl mx-auto px-6 py-20">
-      <h3 className="text-3xl md:text-4xl font-bold mb-10 text-center">{title}</h3>
-      {children}
-    </div>
+    <section className="max-w-7xl mx-auto px-6 py-16 md:py-20">
+      {/* Header */}
+      <div className="mb-12 max-w-3xl">
+        <h3 className="text-3xl md:text-4xl font-bold leading-tight">
+          {title}
+        </h3>
+
+        {/* Luxury gold divider */}
+        <div className="w-20 h-[3px] bg-yellow-400 mt-4 rounded-full" />
+      </div>
+
+      {/* Content */}
+      <div>{children}</div>
+    </section>
   );
 }
 
@@ -250,7 +271,15 @@ function List({ items }: { items: string[] }) {
   );
 }
 
-function Feature({ icon, title, children }: { icon: React.ReactNode; title: string; children: React.ReactNode }) {
+function Feature({
+  icon,
+  title,
+  children,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  children: React.ReactNode;
+}) {
   return (
     <div className="bg-[#111827] p-6 rounded-xl border border-gray-800 hover:border-yellow-400 transition">
       <div className="text-yellow-400 mb-4">{icon}</div>
