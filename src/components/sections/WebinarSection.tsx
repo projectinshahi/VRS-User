@@ -26,39 +26,26 @@ export default function WebinarSection() {
     if (API) fetchWebinars();
   }, []);
 
-  const AU_TIMEZONES = [
-    { label: "Perth", tz: "Australia/Perth" },
-    { label: "Darwin", tz: "Australia/Darwin" },
-    { label: "Brisbane", tz: "Australia/Brisbane" },
-    { label: "Sydney", tz: "Australia/Sydney" },
-    { label: "Melbourne", tz: "Australia/Melbourne" },
-    { label: "Adelaide", tz: "Australia/Adelaide" },
-    { label: "Hobart", tz: "Australia/Hobart" },
-  ];
-
-  const formatDateOnly = (date: Date, timeZone: string) =>
-    new Intl.DateTimeFormat("en-AU", {
-      timeZone,
+  const formatDate = (date: Date) =>
+    date.toLocaleDateString("en-AU", {
       weekday: "long",
       day: "numeric",
       month: "long",
       year: "numeric",
-    }).format(date);
+    });
 
-  const formatTimeOnly = (date: Date, timeZone: string) =>
-    new Intl.DateTimeFormat("en-AU", {
-      timeZone,
+  const formatTime = (date: Date) =>
+    date.toLocaleTimeString("en-AU", {
       hour: "numeric",
       minute: "2-digit",
       hour12: true,
-    }).format(date);
+    });
 
   if (loading || webinars.length === 0) return null;
 
   return (
     <section className="relative bg-black py-14 overflow-hidden">
       <div className="max-w-4xl mx-auto px-6 text-center">
-        {/* Header */}
         <div className="mb-8">
           <div className="w-8 h-[2px] bg-yellow-500 mx-auto mb-2"></div>
           <h2 className="text-xl md:text-2xl font-semibold text-white tracking-wide">
@@ -84,41 +71,22 @@ export default function WebinarSection() {
                 </h3>
 
                 {/* Date */}
-                <div className="flex items-center justify-center gap-2 mb-4 text-gray-300 text-xs md:text-sm">
+                <div className="flex items-center justify-center gap-2 mb-3 text-gray-300 text-xs md:text-sm">
                   <Calendar size={14} className="text-yellow-500" />
                   <span className="font-medium text-white">
-                    {formatDateOnly(eventDate, webinar.australiaTimeZone)}
+                    {formatDate(eventDate)}
                   </span>
                 </div>
 
-                {/* Timezones */}
-                <div className="mb-4">
-                  <div className="flex items-center justify-center gap-2 mb-2 text-xs md:text-sm">
-                    <Clock size={14} className="text-yellow-500" />
-                    <span className="text-white font-medium">
-                      Across Australia
+                {/* Time + Short Zone */}
+                <div className="flex items-center justify-center gap-2 mb-4 text-gray-300 text-xs md:text-sm">
+                  <Clock size={14} className="text-yellow-500" />
+                  <span className="text-white font-semibold">
+                    {formatTime(eventDate)}{" "}
+                    <span className="text-yellow-400">
+                      {webinar.australiaTimeZone}
                     </span>
-                  </div>
-
-                  <div className="grid grid-cols-2 md:grid-cols-3 gap-2 text-[11px] md:text-xs">
-                    {AU_TIMEZONES.map((zone) => {
-                      const isBase = zone.tz === webinar.australiaTimeZone;
-
-                      return (
-                        <div
-                          key={zone.tz}
-                          className={`rounded-md py-1.5 px-2 transition-all duration-300 ${
-                            isBase
-                              ? "bg-yellow-500 text-black font-semibold shadow-md"
-                              : "bg-white/5 text-gray-300 border border-white/10 hover:bg-white/10"
-                          }`}
-                        >
-                          {zone.label} –{" "}
-                          {formatTimeOnly(eventDate, zone.tz)}
-                        </div>
-                      );
-                    })}
-                  </div>
+                  </span>
                 </div>
 
                 {/* Platform */}
