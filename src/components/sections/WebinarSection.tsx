@@ -26,20 +26,16 @@ export default function WebinarSection() {
     if (API) fetchWebinars();
   }, []);
 
-  const formatDate = (date: Date) =>
-    date.toLocaleDateString("en-AU", {
-      weekday: "long",
-      day: "numeric",
-      month: "long",
-      year: "numeric",
-    });
+  // ✅ Convert 24hr time → AM/PM
+  const formatTime = (time: string) => {
+    const [hour, minute] = time.split(":");
+    const h = parseInt(hour);
 
-  const formatTime = (date: Date) =>
-    date.toLocaleTimeString("en-AU", {
-      hour: "numeric",
-      minute: "2-digit",
-      hour12: true,
-    });
+    const ampm = h >= 12 ? "PM" : "AM";
+    const formattedHour = h % 12 || 12;
+
+    return `${formattedHour}:${minute} ${ampm}`;
+  };
 
   if (loading || webinars.length === 0) return null;
 
@@ -58,8 +54,6 @@ export default function WebinarSection() {
 
         <div className="space-y-6">
           {webinars.map((webinar) => {
-            const eventDate = new Date(webinar.startDateTime);
-
             return (
               <div
                 key={webinar._id}
@@ -70,19 +64,19 @@ export default function WebinarSection() {
                   {webinar.title}
                 </h3>
 
-                {/* Date */}
+                {/* Day */}
                 <div className="flex items-center justify-center gap-2 mb-3 text-gray-300 text-xs md:text-sm">
                   <Calendar size={14} className="text-yellow-500" />
                   <span className="font-medium text-white">
-                    {formatDate(eventDate)}
+                    {webinar.day}
                   </span>
                 </div>
 
-                {/* Time + Short Zone */}
+                {/* Time + Timezone */}
                 <div className="flex items-center justify-center gap-2 mb-4 text-gray-300 text-xs md:text-sm">
                   <Clock size={14} className="text-yellow-500" />
                   <span className="text-white font-semibold">
-                    {formatTime(eventDate)}{" "}
+                    {formatTime(webinar.time)}{" "}
                     <span className="text-yellow-400">
                       {webinar.australiaTimeZone}
                     </span>
