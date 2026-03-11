@@ -89,16 +89,11 @@ export default function HeroSection() {
         <div className="w-10 h-[2px] bg-yellow-500 mb-4"></div>
 
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-light leading-tight max-w-3xl tracking-wide">
-          Your Trusted Partner in <br />
+          Find the Right Investment Property <br />
           <span className="text-yellow-500 font-medium">
-            Luxury Real Estate Investment
+            in the Right Location for the Right Price
           </span>
         </h1>
-
-        <p className="mt-4 text-sm md:text-base text-gray-300 max-w-lg">
-          Discover premium investment opportunities across Australia's most
-          sought-after locations.
-        </p>
 
         <div className="mt-6 flex gap-3 flex-wrap justify-center">
           <button

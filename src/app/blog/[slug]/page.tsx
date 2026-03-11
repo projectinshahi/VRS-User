@@ -68,7 +68,7 @@ export default async function BlogDetail(
   }
 
   return (
-    <main className="bg-black text-white pt-28 min-h-screen">
+    <main className="bg-black text-white min-h-screen">
       <section className="py-24">
         <div className="max-w-4xl mx-auto px-6">
 

@@ -40,7 +40,7 @@ export default async function BlogPage() {
       
       <Navbar />
 
-      <main className="flex-1 pt-28">
+      <main className="flex-1 ">
         <section className="py-20">
           <div className="max-w-6xl mx-auto px-6">
 
