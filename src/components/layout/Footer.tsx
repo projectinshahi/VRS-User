@@ -130,17 +130,17 @@ export default function Footer() {
         </p>
 
         <div className="flex gap-4 mt-2 md:mt-0">
-          <a
-            href="https://docs.google.com/document/d/1NoNHhNR8QCH7IMJxi83KCQQhL9uwBhmD1NvbUKc62EI/edit?pli=1&tab=t.0"
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href="/privacy-policy"
             className="hover:text-yellow-500 transition"
           >
             Privacy Policy
-          </a>
-
-          <Link href="#" className="hover:text-yellow-500 transition">
-            Terms of Service
+          </Link>
+          <Link
+            href="/terms-and-conditions"
+            className="hover:text-yellow-500 transition"
+          >
+            Terms & Conditions
           </Link>
         </div>
       </div>
